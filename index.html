@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Ball - Nosotros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style_dropdown.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <!-- Header / Navbar -->
+    <nav class="bg-[#17478f] p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- Espacio para la imagen -->
+                <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo" class="h-28 w-28 mr-3">
+            </div>
+            <ul class="flex space-x-6 relative">
+                <li><a href="index.html" class="text-white hover:text-gray-300">Nosotros</a></li>
+
+                <!-- Menú Desplegable de Servicios -->
+                <li class="dropdown relative">
+                    <a href="#" class="text-white hover:text-gray-300">Servicios</a>
+                    <div class="dropdown-content bg-white shadow-lg rounded-lg absolute">
+                        <a href="exportaciones.html">Exportaciones</a>
+                        <a href="importaciones.html">Importaciones</a>
+                        <a href="outsourcing.html">Outsourcing</a>
+                        <a href="asesoramiento.html">Asesoramiento</a>
+                    </div>
+                </li>
+
+                <li><a href="clientes.html" class="text-white hover:text-gray-300">Clientes</a></li>
+                <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Imagen de fondo) -->
+    <section class="relative bg-fixed bg-center bg-cover h-[600px] flex items-center justify-center" style="background-image: url('./img/index_1.jpg');">
+        <div class="absolute inset-0 bg-[#17478f] bg-opacity-50 flex flex-col justify-center items-center transition-opacity duration-1000 ease-in-out opacity-0 hover:opacity-100">
+            <h1 class="text-white text-5xl font-bold mb-4">Más de 25 años en Comercio Exterior</h1>
+            <p class="text-white text-lg mb-6">Experiencia, profesionalismo y trato personalizado para tus operaciones internacionales.</p>
+            <a href="contacto.html" class="bg-white text-[#17478f] px-6 py-3 font-semibold rounded-md hover:bg-gray-100">Contáctanos</a>
+        </div>
+    </section>
+    
+
+    <!-- Sección de Nosotros -->
+    <section class="container mx-auto p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div>
+                <h2 class="text-3xl font-bold text-[#17478f] mb-4">¿Quiénes somos?</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">Somos un estudio de comercio exterior con más de 25 años de experiencia, ofreciendo un servicio personalizado y adaptado a las necesidades de cada cliente. Nuestro equipo está formado por expertos en comercio internacional, siempre atentos a las nuevas regulaciones y oportunidades para optimizar las operaciones.</p>
+                <a href="servicios.html" class="bg-[#17478f] text-white px-6 py-3 rounded-md hover:bg-blue-700">Conoce nuestros servicios</a>
+            </div>
+            <div>
+                <img src="img/index_2.jpg" alt="Nosotros" class="rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="bg-[#17478f] text-white text-center py-6">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row justify-between items-center m-3">
+            
+            <!-- Enlaces a redes sociales -->
+            <div class="mb-4 lg:mb-0 flex space-x-6">
+                <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-6">
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-6">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-6">
+                </a>
+            </div>
+            
+            <!-- Información de contacto -->
+            <div class="text-sm space-y-2 mb-4 lg:mb-0">
+                <p><a href="mailto:info@estudioball.com" class="hover:underline">E-Mail: info@estudioball.com</a></p>
+                <p><a href="tel:+1234567890" class="hover:underline">Teléfono: +123 456 7890</a></p>
+            </div>
+
+        </div>
+
+        <!-- Derechos reservados -->
+        <div class="mt-4">
+            <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
