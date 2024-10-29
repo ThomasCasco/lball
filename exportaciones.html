@@ -11,34 +11,63 @@
     <style>
         /* Estilos personalizados para las tarjetas */
         .card {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            transition: all .3s;
-            padding: 20px;
-        }
-
-        .card2 {
-            width: 100%;
-            height: auto;
             background-color: #ffffff;
             border-radius: 20px;
-            transition: all .2s;
+            transition: transform 0.3s ease-in-out;
             padding: 20px;
-        }
-
-        .card2:hover {
-            transform: scale(0.98);
-            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .card:hover {
-            box-shadow: 0px 0px 30px 1px rgba(22, 62, 237, 0.736);
+            transform: scale(1.02);
         }
 
         .icon {
             font-size: 3rem;
-            color: #17478f; /* Ajuste del color de los íconos */
+            color: #17478f;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -53,8 +82,6 @@
             </div>
             <ul class="flex space-x-6 relative">
                 <li><a href="index.html" class="text-white hover:text-gray-300">Nosotros</a></li>
-
-                <!-- Menú Desplegable de Servicios -->
                 <li class="dropdown relative">
                     <a href="#" class="text-white hover:text-gray-300">Servicios</a>
                     <div class="dropdown-content bg-white shadow-lg rounded-lg absolute">
@@ -64,7 +91,6 @@
                         <a href="asesoramiento.html">Asesoramiento</a>
                     </div>
                 </li>
-
                 <li><a href="clientes.html" class="text-white hover:text-gray-300">Clientes</a></li>
                 <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
             </ul>
@@ -73,59 +99,171 @@
 
     <!-- Sección de Exportaciones en Cards -->
     <section class="container mx-auto p-10">
-        <h2 class="text-4xl font-bold text-[#17478f] mb-6">Exportaciones</h2>
+        <h2 class="text-4xl font-bold text-[#17478f] mb-10 text-center">Exportaciones</h2>
 
-        <!-- Fila de Cards -->
-        <div class="flex flex-wrap -mx-4 mb-6">
+        <!-- Grid de Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Card 1 -->
-            <div class="w-full md:w-1/2 px-4 mb-6 md:mb-0">
-                <div class="card">
-                    <div class="card2">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-shield-alt icon mr-3"></i>
-                            <h3 class="text-xl font-bold text-[#17478f]">Experiencia y Seguridad</h3>
-                        </div>
-                        <ul class="list-disc ml-6 text-gray-700">
-                            <li>Más de 25 años asesorando a empresas en exportaciones.</li>
-                            <li>Especialistas en minimizar riesgos y maximizar beneficios.</li>
-                            <li>Trabajamos con productores agrícolas e industriales.</li>
-                            <li>Realizamos exportaciones desde cualquier aduana.</li>
-                        </ul>
-                    </div>
+            <div class="card">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-shield-alt icon mr-3"></i>
+                    <h3 class="text-xl font-bold text-[#17478f]">Por qué elegir Estudio Mball</h3>
                 </div>
+                <ul class="list-disc ml-6 text-gray-700">
+                    <li>Experiencia comprobada: Más de 25 años asesorando a empresas en exportaciones.</li>
+                    <li>Networking: Disponemos de una red de profesionales altamente capacitados para operar en todas las aduanas del país.</li>
+                </ul>
             </div>
 
             <!-- Card 2 -->
-            <div class="w-full md:w-1/2 px-4">
-                <div class="card">
-                    <div class="card2">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-user-cog icon mr-3"></i>
-                            <h3 class="text-xl font-bold text-[#17478f]">Personalización y Capacitación</h3>
-                        </div>
-                        <ul class="list-disc ml-6 text-gray-700">
-                            <li>Servicios adaptados a las necesidades específicas de cada cliente.</li>
-                            <li>Constante capacitación para ofrecer las mejores soluciones.</li>
-                            <li>Comunicación clara y transparente para asegurar el éxito de su expansión.</li>
-                        </ul>
+            <div class="card">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-user-cog icon mr-3"></i>
+                    <h3 class="text-xl font-bold text-[#17478f]">Nuestro enfoque</h3>
+                </div>
+                <ul class="list-disc ml-6 text-gray-700">
+                    <li>Personalización: Adaptamos nuestros servicios a las necesidades específicas de cada cliente.</li>
+                    <li>Conocimiento técnico: Asesoramiento integral sobre procedimientos, costos y requisitos aduaneros.</li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-handshake icon mr-3"></i>
+                    <h3 class="text-xl font-bold text-[#17478f]">Nuestros Valores</h3>
+                </div>
+                <ul class="list-disc ml-6 text-gray-700">
+                    <li>Transparencia: Comunicación clara y rápida para que nuestros clientes estén siempre informados.</li>
+                    <li>Capacitación constante: Nuestro equipo se actualiza continuamente para adaptarse a los cambios del mercado.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="container mx-auto p-10">
+        <h2 class="text-4xl font-bold text-[#17478f] mb-8 text-center">Contacto</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <!-- Formulario de Contacto -->
+            <div>
+                <form id="contactForm" class="bg-white shadow-md rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Déjanos tus datos</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="razon_social">Razón Social (de corresponder):</label>
+                        <input type="text" id="razon_social" name="razon_social" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
                     </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="rubro">Rubro:</label>
+                        <input type="text" id="rubro" name="rubro" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="provincia">Provincia:</label>
+                        <select id="provincia" name="provincia" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                            <option value="">Seleccione una provincia</option>
+                            <option value="Buenos Aires">Buenos Aires</option>
+                            <option value="Córdoba">Córdoba</option>
+                            <option value="Santa Fe">Santa Fe</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Datos de Contacto</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-[#17478f] text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Redes Sociales y Mapa -->
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-[#17478f] mb-4">Nuestras Redes Sociales</h3>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-8">
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-8">
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mapa de Google -->
+                <div class="w-full h-64 bg-gray-200 shadow-md">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sTacuar%C3%AD%20202%2C%20C1071AAF%20CABA%2C%20Argentina!5e0!3m2!1sen!2sus!4v1632849294283!5m2!1sen!2sus"
+                        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+
+                <!-- Información de contacto -->
+                <div class="space-y-2">
+                    <p><strong>E-Mail:</strong> info@estudioball.com</p>
+                    <p><strong>Teléfono:</strong> +123 456 7890</p>
                 </div>
             </div>
         </div>
-
-        <!-- Card 3 (restaurada al diseño anterior) -->
-        <div class="bg-white shadow-md rounded-lg p-6">
-            <h3 class="text-xl font-bold text-[#17478f] mb-4">Contáctenos</h3>
-            <p class="text-gray-700">Si desea saber más sobre cómo podemos ayudarlo a llevar sus productos al mercado internacional, no dude en contactarnos. Ofrecemos una atención personalizada para entender y responder a sus necesidades.</p>
-        </div>
     </section>
+
+    <!-- Popup de confirmación -->
+    <div id="popup" class="bg-white p-4 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-green-600">Formulario enviado</h2>
+        <p>Gracias por contactarnos, responderemos a la brevedad.</p>
+        <button onclick="closePopup()" class="mt-4 bg-[#17478f] text-white px-4 py-2 rounded hover:bg-blue-700">Cerrar</button>
+    </div>
+
+    <!-- Overlay de bloqueo -->
+    <div id="overlay"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Mostrar el overlay para deshabilitar la página mientras se envía el formulario
+            document.getElementById('overlay').style.display = 'block';
+
+            // Crear objeto FormData para los datos del formulario
+            const formData = new FormData(e.target);
+
+            // Enviar los datos mediante fetch a la URL de Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbyg5_NQ7dlfEefOP_tBWQ4guhhIcJbSNpdjmFXv8shzp2gy7_wYU3FebYAFGSnqVnZU/exec', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.text())
+            .then(result => {
+                // Ocultar overlay y mostrar popup de confirmación
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'block';
+            }).catch(error => {
+                console.error('Error:', error);
+                document.getElementById('overlay').style.display = 'none';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="bg-[#17478f] text-white text-center py-6">
         <div class="container mx-auto">
-            <div class="flex justify-between items-center m-3">
-                <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
-            </div>
+            <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
