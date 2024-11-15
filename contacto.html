@@ -27,55 +27,48 @@
                         <a href="asesoramiento.html">Asesoramiento</a>
                     </div>
                 </li>
-                <li><a href="clientes.html" class="text-white hover:text-gray-300">Clientes</a></li>
+
                 <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Sección de Contacto -->
-    <section class="container mx-auto p-10">
+      <!-- Sección de Contacto -->
+      <section class="container mx-auto p-10">
         <h2 class="text-4xl font-bold text-[#17478f] mb-8 text-center">Contacto</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <!-- Formulario de Contacto -->
             <div>
-                <form id="contactForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form id="contactForm" class="bg-white shadow-md rounded-lg p-8">
+                    <input type="hidden" id="origen1" name="origen1" value="Exportaciones">
                     <h3 class="text-2xl font-bold text-[#17478f] mb-4">Déjanos tus datos</h3>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="razon_social">Razón Social (de corresponder):</label>
-                        <input type="text" id="razon_social" name="razon_social" placeholder="Razón Social" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="text" id="razon_social" name="razon_social" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="rubro">Rubro:</label>
-                        <input type="text" id="rubro" name="rubro" placeholder="Rubro" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                    </div>
+                   
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="provincia">Provincia:</label>
-                        <select id="provincia" name="provincia" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <select id="provincia" name="provincia" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                             <option value="">Seleccione una provincia</option>
                             <option value="Buenos Aires">Buenos Aires</option>
                             <option value="Córdoba">Córdoba</option>
                             <option value="Santa Fe">Santa Fe</option>
-                            <!-- Añadir más opciones de provincias según sea necesario -->
                         </select>
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" placeholder="Dirección" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                    </div>
-
+                   
                     <h3 class="text-2xl font-bold text-[#17478f] mb-4">Datos de Contacto</h3>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" placeholder="E-mail" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
                     <div class="flex items-center justify-between">
                         <button type="submit" class="bg-[#17478f] text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">Enviar</button>
@@ -87,13 +80,13 @@
             <div class="space-y-6">
                 <h3 class="text-2xl font-bold text-[#17478f] mb-4">Nuestras Redes Sociales</h3>
                 <div class="flex space-x-4">
-                    <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-500">
+                    <a href="https://www.facebook.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-8">
                     </a>
-                    <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-500">
+                    <a href="https://www.linkedin.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-8">
                     </a>
-                    <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-500">
+                    <a href="https://www.instagram.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-8">
                     </a>
                 </div>
@@ -108,7 +101,7 @@
                 <!-- Información de contacto -->
                 <div class="space-y-2">
                     <p><strong>E-Mail:</strong> info@estudioball.com</p>
-                    <p><strong>Teléfono:</strong> +123 456 7890</p>
+                    <p><strong>Teléfono:</strong> +54 9 11 7064-6726</p>
                 </div>
             </div>
         </div>
@@ -121,42 +114,44 @@
         <button onclick="closePopup()" class="mt-4 bg-[#17478f] text-white px-4 py-2 rounded hover:bg-blue-700">Cerrar</button>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-[#17478f] text-white text-center py-6">
-        <div class="container mx-auto">
-            <div class="flex justify-between items-center m-3">
-                <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Overlay de bloqueo -->
+    <div id="overlay"></div>
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+            e.preventDefault();
 
-        // Mostrar el overlay para deshabilitar la página mientras se envía el formulario
-        document.getElementById('overlay').classList.remove('hidden');
-        
-        // Crear objeto FormData para los datos del formulario
-        const formData = new FormData(e.target);
-        
-        // Enviar los datos mediante fetch a la URL de Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbyg5_NQ7dlfEefOP_tBWQ4guhhIcJbSNpdjmFXv8shzp2gy7_wYU3FebYAFGSnqVnZU/exec', {
-            method: 'POST',
-            body: formData
-        }).then(response => response.text())
-        .then(result => {
-            // Ocultar overlay y mostrar popup de confirmación
-            document.getElementById('overlay').classList.add('hidden');
-            document.getElementById('popup').style.display = 'block';
-        }).catch(error => {
-            console.error('Error:', error);
-            document.getElementById('overlay').classList.add('hidden');
+            // Mostrar el overlay para deshabilitar la página mientras se envía el formulario
+            document.getElementById('overlay').style.display = 'block';
+
+            // Crear objeto FormData para los datos del formulario
+            const formData = new FormData(e.target);
+
+            // Enviar los datos mediante fetch a la URL de Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbyg5_NQ7dlfEefOP_tBWQ4guhhIcJbSNpdjmFXv8shzp2gy7_wYU3FebYAFGSnqVnZU/exec', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.text())
+            .then(result => {
+                // Ocultar overlay y mostrar popup de confirmación
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'block';
+            }).catch(error => {
+                console.error('Error:', error);
+                document.getElementById('overlay').style.display = 'none';
+            });
         });
-    });
 
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
     </script>
-    <!-- Capa de bloqueo mientras se está enviando el formulario -->
-    <div id="overlay" class="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 hidden"></div>
+
+    <!-- Footer -->
+    <footer class="bg-[#17478f] text-white text-center py-6">
+        <div class="container mx-auto">
+            <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>

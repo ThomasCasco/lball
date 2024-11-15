@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Ball - Nuestros Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .service-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .service-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .service-card:hover .service-description {
+            max-height: 100px;
+            opacity: 1;
+        }
+        .service-link {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .service-card:hover .service-link {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+    <nav class="bg-[#17478f] p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="img/logo_web-removebg-preview (2).png" alt="Logo" class="h-16 w-auto mr-3">
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="text-white hover:text-gray-300">Nosotros</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Servicios</a></li>
+                <li><a href="clientes.html" class="text-white hover:text-gray-300">Clientes</a></li>
+                <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-[#17478f] mb-8 text-center">Nuestros Servicios</h1>
+        <div class="space-y-4">
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex items-center p-4">
+                    <div class="flex-shrink-0 mr-4">
+                        <i class="fas fa-chart-line text-3xl text-[#17478f]"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-semibold text-[#17478f]">Exportaciones</h3>
+                        <p class="service-description text-gray-600 mt-2">
+                            Facilitamos tus operaciones de exportación con asesoramiento experto.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="exportaciones.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex items-center p-4">
+                    <div class="flex-shrink-0 mr-4">
+                        <i class="fas fa-file-import text-3xl text-[#17478f]"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-semibold text-[#17478f]">Importaciones</h3>
+                        <p class="service-description text-gray-600 mt-2">
+                            Optimizamos tus procesos de importación para maximizar tu eficiencia.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="importaciones.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex items-center p-4">
+                    <div class="flex-shrink-0 mr-4">
+                        <i class="fas fa-users text-3xl text-[#17478f]"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-semibold text-[#17478f]">Outsourcing</h3>
+                        <p class="service-description text-gray-600 mt-2">
+                            Gestionamos tus operaciones de comercio exterior de manera integral.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="outsourcing.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex items-center p-4">
+                    <div class="flex-shrink-0 mr-4">
+                        <i class="fas fa-question-circle text-3xl text-[#17478f]"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-semibold text-[#17478f]">Asesoramiento</h3>
+                        <p class="service-description text-gray-600 mt-2">
+                            Brindamos consultoría especializada para tus proyectos internacionales.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="asesoramiento.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#17478f] text-white text-center py-6 mt-8">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-center m-3">
+                <div class="mb-4 lg:mb-0 flex space-x-6">
+                    <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-300">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-300">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-300">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+                <div class="text-sm space-y-2 mb-4 lg:mb-0">
+                    <p><a href="mailto:info@estudioball.com" class="hover:underline">E-Mail: info@estudioball.com</a></p>
+                    <p><a href="tel:+1234567890" class="hover:underline">Teléfono: +123 456 7890</a></p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
