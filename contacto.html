@@ -17,9 +17,9 @@
                 <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo" class="h-28 w-28 mr-3">
             </div>
             <ul class="flex space-x-6 relative">
-                <li><a href="index.html" class="text-white hover:text-gray-300">Nosotros</a></li>
+                <li><a href="index.html#referencia" class="text-white hover:text-gray-300">Nosotros</a></li>
                 <li class="dropdown relative">
-                    <a href="#" class="text-white hover:text-gray-300">Servicios</a>
+                    <a href="servicios.html" class="text-white hover:text-gray-300">Servicios</a>
                     <div class="dropdown-content bg-white shadow-lg rounded-lg absolute">
                         <a href="exportaciones.html">Exportaciones</a>
                         <a href="importaciones.html">Importaciones</a>
@@ -41,40 +41,86 @@
             <div>
                 <form id="contactForm" class="bg-white shadow-md rounded-lg p-8">
                     <input type="hidden" id="origen1" name="origen1" value="Exportaciones">
-                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Déjanos tus datos</h3>
+                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Datos de contacto</h3>
+            
+                    <!-- Razón Social -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="razon_social">Razón Social (de corresponder):</label>
-                        <input type="text" id="razon_social" name="razon_social" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="razon_social">
+                            Razón Social (de corresponder):
+                        </label>
+                        <input type="text" id="razon_social" name="razon_social" 
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
                     </div>
-                   
+            
+                    <!-- Provincia -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="provincia">Provincia:</label>
                         <select id="provincia" name="provincia" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                             <option value="">Seleccione una provincia</option>
                             <option value="Buenos Aires">Buenos Aires</option>
+                            <option value="CABA">Ciudad Autónoma de Buenos Aires</option>
+                            <option value="Catamarca">Catamarca</option>
+                            <option value="Chaco">Chaco</option>
+                            <option value="Chubut">Chubut</option>
                             <option value="Córdoba">Córdoba</option>
+                            <option value="Corrientes">Corrientes</option>
+                            <option value="Entre Ríos">Entre Ríos</option>
+                            <option value="Formosa">Formosa</option>
+                            <option value="Jujuy">Jujuy</option>
+                            <option value="La Pampa">La Pampa</option>
+                            <option value="La Rioja">La Rioja</option>
+                            <option value="Mendoza">Mendoza</option>
+                            <option value="Misiones">Misiones</option>
+                            <option value="Neuquén">Neuquén</option>
+                            <option value="Río Negro">Río Negro</option>
+                            <option value="Salta">Salta</option>
+                            <option value="San Juan">San Juan</option>
+                            <option value="San Luis">San Luis</option>
+                            <option value="Santa Cruz">Santa Cruz</option>
                             <option value="Santa Fe">Santa Fe</option>
+                            <option value="Santiago del Estero">Santiago del Estero</option>
+                            <option value="Tierra del Fuego">Tierra del Fuego</option>
+                            <option value="Tucumán">Tucumán</option>
                         </select>
                     </div>
-                   
-                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Datos de Contacto</h3>
+            
+                    <!-- Nombre -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                        <input type="text" id="nombre" name="nombre" 
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
+            
+                    <!-- E-mail -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                        <input type="email" id="email" name="email" 
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
+            
+                    <!-- Teléfono -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
+                        <input type="tel" id="telefono" name="telefono" 
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
                     </div>
+            
+                    <!-- Consulta -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="consulta">Consulta:</label>
+                        <textarea id="consulta" name="consulta" rows="5" 
+                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required></textarea>
+                    </div>
+            
+                    <!-- Submit Button -->
                     <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-[#17478f] text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">Enviar</button>
+                        <button type="submit" class="bg-[#17478f] text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                            Enviar
+                        </button>
                     </div>
                 </form>
             </div>
+            
 
             <!-- Redes Sociales y Mapa -->
             <div class="space-y-6">
@@ -94,7 +140,7 @@
                 <!-- Mapa de Google -->
                 <div class="w-full h-64 bg-gray-200 shadow-md">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sTacuar%C3%AD%20202%2C%20C1071AAF%20CABA%2C%20Argentina!5e0!3m2!1sen!2sus!4v1632849294283!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sMoreno%20955%2C%20C1091AAS%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1632849294283!5m2!1ses!2sar"
                         width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
 
@@ -105,12 +151,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="whatsapp-float">
+            <a href="https://wa.me/5491170646726" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+            </a>
+        </div>
     </section>
 
     <!-- Popup de confirmación -->
     <div id="popup" class="bg-white p-4 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-green-600">Formulario enviado</h2>
-        <p>Gracias por contactarnos, responderemos a la brevedad.</p>
+        <h2 class="text-2xl font-bold text-green-600">Consulta enviada</h2>
+        <p>Gracias por elegirnos, va a recibir una respuesta inmediata a su mail.</p>
         <button onclick="closePopup()" class="mt-4 bg-[#17478f] text-white px-4 py-2 rounded hover:bg-blue-700">Cerrar</button>
     </div>
 
@@ -128,7 +180,7 @@
             const formData = new FormData(e.target);
 
             // Enviar los datos mediante fetch a la URL de Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbyg5_NQ7dlfEefOP_tBWQ4guhhIcJbSNpdjmFXv8shzp2gy7_wYU3FebYAFGSnqVnZU/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxtTWxWpQ7xJTyTyBy9o6Es2KsdZ3q30w3POb-hxAjLY6SdecEIFmBAT_A-wIT0rsw/exec', {
                 method: 'POST',
                 body: formData
             }).then(response => response.text())
@@ -152,6 +204,7 @@
         <div class="container mx-auto">
             <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
         </div>
+
     </footer>
 </body>
 </html>
