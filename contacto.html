@@ -1,191 +1,808 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Ball - Contacto</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style_dropdown.css">
-</head>
-<body class="bg-gray-100 font-sans text-gray-800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #17478f;
+            --primary-light: #e6eefb;
+            --primary-dark: #0d2b56;
+            --secondary: #f8fafc;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --success: #38a169;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius-sm: 0.25rem;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+        }
 
-    <!-- Header / Navbar -->
-    <nav class="bg-[#17478f] p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center">
-                <!-- Espacio para la imagen -->
-                <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo" class="h-40 w-36 mr-3">
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #f9fafb;
+            line-height: 1.6;
+        }
+
+        /* Utility classes */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        .section-title {
+            position: relative;
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: var(--primary);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .navbar-logo {
+            height: 20dvh;
+
+            transition: all 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(23, 71, 143, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-scrolled .navbar-logo {
+            height: 40px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-link {
+            color: var(--white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: var(--white);
+            min-width: 200px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+            z-index: 10;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* Hero section styles */
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e2e8f0 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(23, 71, 143, 0.1);
+            border-radius: 0 0 0 100%;
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(23, 71, 143, 0.1);
+            border-radius: 0 100% 0 0;
+            z-index: 0;
+        }
+
+        .hero-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact section styles */
+        .contact-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            background-color: var(--white);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(23, 71, 143, 0.1);
+        }
+
+        .form-submit {
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-link img {
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+        }
+
+        .contact-info {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-item i {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            background-color: var(--primary);
+        }
+
+        .contact-card:hover .contact-icon i {
+            color: var(--white);
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* WhatsApp float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .whatsapp-button img {
+            width: 35px;
+            height: 35px;
+        }
+
+        /* Popup styles */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+        }
+
+        .popup-title {
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .popup-button {
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .popup-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-container {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Navbar Sticky -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div>
+                <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo Estudio Ball" class="navbar-logo">
             </div>
-            <ul class="flex space-x-6 relative">
-                <li><a href="index.html#referencia" class="text-white hover:text-gray-300">Nosotros</a></li>
-                <li class="dropdown relative">
-                    <a href="servicios.html" class="text-white hover:text-gray-300">Servicios</a>
-                    <div class="dropdown-content bg-white shadow-lg rounded-lg absolute">
-                        <a href="exportaciones.html">Exportaciones</a>
-                        <a href="importaciones.html">Importaciones</a>
-                        <a href="outsourcing.html">Outsourcing</a>
-                        <a href="asesoramiento.html">Asesoramiento</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html#referencia" class="navbar-link">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html" class="navbar-link">Servicios</a>
+                    <div class="dropdown-content">
+                        <a href="exportaciones.html" class="dropdown-item">Exportaciones</a>
+                        <a href="importaciones.html" class="dropdown-item">Importaciones</a>
+                        <a href="outsourcing.html" class="dropdown-item">Outsourcing</a>
+                        <a href="asesoramiento.html" class="dropdown-item">Asesoramiento</a>
                     </div>
                 </li>
-
-                <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
+                <li><a href="contacto.html" class="navbar-link">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
-      <!-- Sección de Contacto -->
-      <section class="container mx-auto p-10">
-        <h2 class="text-4xl font-bold text-[#17478f] mb-8 text-center">Realiza tu consulta</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <!-- Formulario de Contacto -->
-            <div>
-                <form id="contactForm" class="bg-white shadow-md rounded-lg p-8">
-                    <input type="hidden" id="origen1" name="origen1" value="Exportaciones">
-                    <h3 class="text-2xl font-bold text-[#17478f] mb-4">Datos de contacto</h3>
-            
-                    <!-- Razón Social -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="razon_social">
-                            Razón Social (de corresponder):
-                        </label>
-                        <input type="text" id="razon_social" name="razon_social" 
-                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
-                    </div>
-            
-                    <!-- Provincia -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="provincia">Provincia:</label>
-                        <select id="provincia" name="provincia" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
-                            <option value="">Seleccione una provincia</option>
-                            <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="CABA">Ciudad Autónoma de Buenos Aires</option>
-                            <option value="Catamarca">Catamarca</option>
-                            <option value="Chaco">Chaco</option>
-                            <option value="Chubut">Chubut</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Corrientes">Corrientes</option>
-                            <option value="Entre Ríos">Entre Ríos</option>
-                            <option value="Formosa">Formosa</option>
-                            <option value="Jujuy">Jujuy</option>
-                            <option value="La Pampa">La Pampa</option>
-                            <option value="La Rioja">La Rioja</option>
-                            <option value="Mendoza">Mendoza</option>
-                            <option value="Misiones">Misiones</option>
-                            <option value="Neuquén">Neuquén</option>
-                            <option value="Río Negro">Río Negro</option>
-                            <option value="Salta">Salta</option>
-                            <option value="San Juan">San Juan</option>
-                            <option value="San Luis">San Luis</option>
-                            <option value="Santa Cruz">Santa Cruz</option>
-                            <option value="Santa Fe">Santa Fe</option>
-                            <option value="Santiago del Estero">Santiago del Estero</option>
-                            <option value="Tierra del Fuego">Tierra del Fuego</option>
-                            <option value="Tucumán">Tucumán</option>
-                        </select>
-                    </div>
-            
-                    <!-- Nombre -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" 
-                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
-                    </div>
-            
-                    <!-- E-mail -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" 
-                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
-                    </div>
-            
-                    <!-- Teléfono -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" 
-                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required>
-                    </div>
-            
-                    <!-- Consulta -->
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="consulta">Consulta:</label>
-                        <textarea id="consulta" name="consulta" rows="5" 
-                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" required></textarea>
-                    </div>
-            
-                    <!-- Submit Button -->
-                    <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-[#17478f] text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
-                            Enviar
-                        </button>
-                    </div>
-                </form>
+    <!-- Sección de Contacto Hero -->
+    <section class="section-container pt-32 fade-in">
+        <div class="hero-section">
+            <h2 class="text-4xl font-bold text-[#17478f] text-center hero-title">Realiza tu consulta</h2>
+            <div class="hero-content text-center">
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Estamos aquí para <span class="font-semibold text-[#17478f]">ayudarte en todas tus necesidades</span> de comercio exterior. Completa el formulario a continuación y nuestro equipo de expertos se pondrá en contacto contigo a la brevedad.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información de Contacto -->
+    <section class="section-container slide-up">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="contact-card flex items-start">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-[#17478f] mb-2">Dirección</h3>
+                    <p class="text-gray-700">Moreno 955, C1091AAS CABA, Argentina</p>
+                </div>
             </div>
             
-
-            <!-- Redes Sociales y Mapa -->
-            <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-[#17478f] mb-4">Nuestras Redes Sociales</h3>
-                <div class="flex space-x-4">
-                    <a href="https://www.facebook.com" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-8">
-                    </a>
-                    <a href="https://www.linkedin.com" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-8">
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-8">
-                    </a>
+            <div class="contact-card flex items-start">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
                 </div>
-
-                <!-- Mapa de Google -->
-                <div class="w-full h-64 bg-gray-200 shadow-md">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sMoreno%20955%2C%20C1091AAS%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1632849294283!5m2!1ses!2sar"
-                        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <div>
+                    <h3 class="font-bold text-lg text-[#17478f] mb-2">Teléfono</h3>
+                    <p class="text-gray-700">+54 9 11 7064-6726</p>
                 </div>
-
-                <!-- Información de contacto -->
-                <div class="space-y-2">
-                    <p><strong>E-Mail:</strong> info@estudioball.com</p>
-                    <p><strong>Teléfono:</strong> +54 9 11 7064-6726</p>
+            </div>
+            
+            <div class="contact-card flex items-start">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-[#17478f] mb-2">Email</h3>
+                    <p class="text-gray-700">info@estudioball.com</p>
                 </div>
             </div>
         </div>
+    </section>
 
+    <!-- Sección de Formulario y Mapa -->
+    <section class="section-container slide-up">
+        <div class="contact-section">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
+                <!-- Formulario de Contacto -->
+                <div>
+                    <form id="contactForm" class="contact-form">
+                        <input type="hidden" id="origen1" name="origen1" value="Contacto">
+                        <h3 class="text-2xl font-bold text-[#17478f] mb-6">Datos de contacto</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="razon_social">Razón Social (de corresponder):</label>
+                            <input type="text" id="razon_social" name="razon_social" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="provincia">Provincia:</label>
+                            <select id="provincia" name="provincia" class="form-control" required>
+                                <option value="">Seleccione una provincia</option>
+                                <option value="Buenos Aires">Buenos Aires</option>
+                                <option value="CABA">Ciudad Autónoma de Buenos Aires</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Corrientes">Corrientes</option>
+                                <option value="Entre Ríos">Entre Ríos</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value="Jujuy">Jujuy</option>
+                                <option value="La Pampa">La Pampa</option>
+                                <option value="La Rioja">La Rioja</option>
+                                <option value="Mendoza">Mendoza</option>
+                                <option value="Misiones">Misiones</option>
+                                <option value="Neuquén">Neuquén</option>
+                                <option value="Río Negro">Río Negro</option>
+                                <option value="Salta">Salta</option>
+                                <option value="San Juan">San Juan</option>
+                                <option value="San Luis">San Luis</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Santa Fe">Santa Fe</option>
+                                <option value="Santiago del Estero">Santiago del Estero</option>
+                                <option value="Tierra del Fuego">Tierra del Fuego</option>
+                                <option value="Tucumán">Tucumán</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="consulta">Consulta:</label>
+                            <textarea id="consulta" name="consulta" rows="5" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane mr-2"></i> Enviar consulta
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Redes Sociales y Mapa -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#17478f] mb-4">Nuestras Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com" target="_blank" class="social-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" class="social-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sMoreno%20955%2C%20C1091AAS%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1632849294283!5m2!1ses!2sar"
+                            width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <p><strong>Horario de atención:</strong> Lunes a Viernes de 9:00 a 18:00</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><strong>E-Mail:</strong> info@estudioball.com</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p><strong>Teléfono:</strong> +54 9 11 7064-6726</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="whatsapp-float">
-            <a href="https://wa.me/5491170646726" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+            <a href="https://api.whatsapp.com/send?phone=5491170646726&text=Hola%20estoy%20interesado%20en%20trabajar%20con%20mball!" target="_blank" class="whatsapp-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
             </a>
         </div>
     </section>
 
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="section-container fade-in">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="bg-white rounded-lg shadow-md p-8">
+            <div class="space-y-6">
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-xl font-bold text-[#17478f] mb-2">¿Cuánto tiempo tarda en responder a mi consulta?</h3>
+                    <p class="text-gray-700">Nos comprometemos a responder todas las consultas en un plazo máximo de 24 horas hábiles, aunque generalmente lo hacemos mucho antes.</p>
+                </div>
+                
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-xl font-bold text-[#17478f] mb-2">¿Trabajan con empresas de todos los tamaños?</h3>
+                    <p class="text-gray-700">Sí, trabajamos con empresas de todos los tamaños, desde emprendedores que están comenzando hasta grandes corporaciones con operaciones internacionales establecidas.</p>
+                </div>
+                
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-xl font-bold text-[#17478f] mb-2">¿Ofrecen asesoramiento personalizado?</h3>
+                    <p class="text-gray-700">Absolutamente. Cada cliente recibe un servicio personalizado adaptado a sus necesidades específicas y al sector en el que opera.</p>
+                </div>
+                
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-xl font-bold text-[#17478f] mb-2">¿En qué zonas del país operan?</h3>
+                    <p class="text-gray-700">Operamos en todas las aduanas del país gracias a nuestra extensa red de profesionales altamente capacitados.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-[#17478f] mb-2">¿Cómo puedo comenzar a trabajar con ustedes?</h3>
+                    <p class="text-gray-700">El primer paso es completar el formulario de contacto en esta página. Uno de nuestros asesores se pondrá en contacto contigo para conocer tus necesidades y ofrecerte la mejor solución.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Popup de confirmación -->
-    <div id="popup" class="bg-white p-4 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-green-600">Consulta enviada</h2>
+    <div id="popup">
+        <h2 class="popup-title">Consulta enviada</h2>
         <p>Gracias por elegirnos, va a recibir una respuesta inmediata a su mail.</p>
-        <button onclick="closePopup()" class="mt-4 bg-[#17478f] text-white px-4 py-2 rounded hover:bg-blue-700">Cerrar</button>
+        <button onclick="closePopup()" class="popup-button">Cerrar</button>
     </div>
 
     <!-- Overlay de bloqueo -->
     <div id="overlay"></div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Estudio Ball. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
     <script>
+        // Form submission
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
-            // Mostrar el overlay para deshabilitar la página mientras se envía el formulario
             document.getElementById('overlay').style.display = 'block';
-
-            // Crear objeto FormData para los datos del formulario
             const formData = new FormData(e.target);
-
-            // Enviar los datos mediante fetch a la URL de Google Apps Script
             fetch('https://script.google.com/macros/s/AKfycbxtTWxWpQ7xJTyTyBy9o6Es2KsdZ3q30w3POb-hxAjLY6SdecEIFmBAT_A-wIT0rsw/exec', {
                 method: 'POST',
                 body: formData
             }).then(response => response.text())
             .then(result => {
-                // Ocultar overlay y mostrar popup de confirmación
                 document.getElementById('overlay').style.display = 'none';
                 document.getElementById('popup').style.display = 'block';
             }).catch(error => {
@@ -194,17 +811,40 @@
             });
         });
 
+        // Close popup
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.contact-card').forEach(el => {
+                observer.observe(el);
+                el.classList.remove('fade-in');
+            });
+        });
     </script>
-
-    <!-- Footer -->
-    <footer class="bg-[#17478f] text-white text-center py-6">
-        <div class="container mx-auto">
-            <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
-        </div>
-
-    </footer>
 </body>
+
 </html>

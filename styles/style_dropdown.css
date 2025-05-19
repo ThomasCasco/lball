@@ -95,29 +95,6 @@
                 0 0 100px rgba(0, 140, 255, 0.285);
   }
 
-  .whatsapp-float {
-    position: fixed;
-    bottom: 20px; /* Ajusta la posición desde abajo */
-    right: 20px; /* Ajusta la posición desde la derecha */
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
-}
+ 
 
-.whatsapp-float a {
-    display: block;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366; /* Color de fondo de WhatsApp */
-    border-radius: 50%; /* Hace que sea redondo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-    transition: transform 0.3s ease-in-out; /* Animación suave al pasar el cursor */
-}
 
-.whatsapp-float a:hover {
-    transform: scale(1.1); /* Agranda el icono al pasar el cursor */
-}
-
-.whatsapp-float img {
-    width: 100%; /* Ajusta el tamaño del logo al contenedor */
-    height: 100%; /* Ajusta el tamaño del logo al contenedor */
-    padding: 10%; /* Deja un poco de espacio interno */
-}

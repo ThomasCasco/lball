@@ -4,230 +4,1118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Ball - Outsourcing</title>
+    <title>Estudio Ball - Servicios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/style_dropdown.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
-        .service-card {
-            transition: all 0.3s ease-in-out;
-        }
-        .service-description {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-        }
-        .service-card:hover .service-description {
-            max-height: 100px;
-            opacity: 1;
-        }
-        .service-link {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .service-card:hover .service-link {
-            opacity: 1;
-        }
-        /* Estilos personalizados para las tarjetas */
-        .card {
-            background-color: #ffffff;
-            border-radius: 20px;
-            transition: transform 0.3s ease-in-out;
-            padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        /* Base styles */
+        :root {
+            --primary: #17478f;
+            --primary-light: #e6eefb;
+            --primary-dark: #0d2b56;
+            --secondary: #f8fafc;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --success: #38a169;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius-sm: 0.25rem;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
         }
 
-        .card:hover {
-            transform: scale(1.02);
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #f9fafb;
+            line-height: 1.6;
         }
 
-        .icon {
-            font-size: 3rem;
-            color: #17478f;
+        /* Utility classes */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
         }
 
-        #popup {
-            display: none;
-            position: fixed;
-            top: 50%;
+        .section-title {
+            position: relative;
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            z-index: 1000;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
         }
 
-        #overlay {
-            display: none;
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: var(--primary);
             position: fixed;
             top: 0;
             left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .navbar-logo {
+            height: 20dvh;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(23, 71, 143, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-scrolled .navbar-logo {
+            height: 40px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-link {
+            color: var(--white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover::after {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #ffffff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: var(--white);
+            min-width: 200px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+            z-index: 10;
             opacity: 0;
-            transform: translateY(10px);
+            transition: all 0.3s ease;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* Hero section styles */
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e2e8f0 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(23, 71, 143, 0.1);
+            border-radius: 0 0 0 100%;
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(23, 71, 143, 0.1);
+            border-radius: 0 100% 0 0;
+            z-index: 0;
+        }
+
+        .hero-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services section styles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card-header {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .service-card-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-card-header img {
+            transform: scale(1.1);
+        }
+
+        .service-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-card-icon {
+            background-color: var(--primary);
+        }
+
+        .service-card:hover .service-card-icon i {
+            color: var(--white);
+        }
+
+        .service-card-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .service-card-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .service-card-text {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .service-card-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card-feature i {
+            color: var(--primary);
+            margin-right: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .service-card-feature-text {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .service-card-footer {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Process section styles */
+        .process-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(23, 71, 143, 0.05);
+            border-radius: 50%;
+            top: -150px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        .process-section::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(23, 71, 143, 0.05);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .process-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .process-step-content {
+            flex-grow: 1;
+        }
+
+        .process-step-title {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-text {
+            color: var(--text-light);
+        }
+
+        /* CTA section styles */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            bottom: -75px;
+            left: -75px;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* WhatsApp float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .whatsapp-button img {
+            width: 35px;
+            height: 35px;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-link {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link a:hover {
+            color: var(--white);
+            padding-left: 0.5rem;
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .footer-contact-icon i {
+            color: var(--white);
+            font-size: 0.875rem;
+        }
+
+        .footer-contact-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link:hover {
+            background-color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .footer-social-link img {
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link:hover img {
+            filter: brightness(0) saturate(100%) invert(19%) sepia(70%) saturate(2262%) hue-rotate(201deg) brightness(94%) contrast(87%);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-container {
+                padding: 3rem 1rem;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
+            }
+
+            .cta-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-100 font-sans text-gray-800">
-    <!-- Header / Navbar -->
-    <nav class="bg-[#17478f] p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center">
-                <!-- Espacio para la imagen -->
-                <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo" class="h-28 w-28 mr-3">
+<body>
+    <!-- Header / Navbar Sticky -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div>
+                <img src="img/Diseño_sin_título-removebg-preview.png" alt="Logo Estudio Ball" class="navbar-logo">
             </div>
-            <ul class="flex space-x-6 relative">
-                <li><a href="index.html#referencia" class="text-white hover:text-gray-300">Nosotros</a></li>
-                <li class="dropdown relative">
-                    <a href="servicios.html" class="text-white hover:text-gray-300">Servicios</a>
-                    <div class="dropdown-content bg-white shadow-lg rounded-lg absolute">
-                        <a href="exportaciones.html">Exportaciones</a>
-                        <a href="importaciones.html">Importaciones</a>
-                        <a href="outsourcing.html">Outsourcing</a>
-                        <a href="asesoramiento.html">Asesoramiento</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html#nosotros" class="navbar-link">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html" class="navbar-link">Servicios</a>
+                    <div class="dropdown-content">
+                        <a href="exportaciones.html" class="dropdown-item">Exportaciones</a>
+                        <a href="importaciones.html" class="dropdown-item">Importaciones</a>
+                        <a href="outsourcing.html" class="dropdown-item">Outsourcing</a>
+                        <a href="asesoramiento.html" class="dropdown-item">Asesoramiento</a>
                     </div>
                 </li>
-                <li><a href="contacto.html" class="text-white hover:text-gray-300">Contacto</a></li>
+                <li><a href="contacto.html" class="navbar-link">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Sección de Exportaciones en Cards -->
-    <main class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-[#17478f] mb-8 text-center">Nuestros Servicios</h1>
-        <div class="space-y-4">
-            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="flex items-center p-4">
-                    <div class="flex-shrink-0 mr-4">
-                        <i class="fas fa-chart-line text-3xl text-[#17478f]"></i>
+    <!-- Sección de Hero -->
+    <section class="section-container pt-32 fade-in">
+        <div class="hero-section">
+            <div class="hero-content text-center">
+                <h1 class="text-4xl font-bold text-[#17478f] hero-title">Nuestros Servicios</h1>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    En Estudio Ball ofrecemos <span class="font-semibold text-[#17478f]">soluciones integrales de comercio exterior</span> adaptadas a las necesidades específicas de cada cliente. Nuestro equipo de expertos está listo para ayudarte a expandir tu negocio internacionalmente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="section-container slide-up">
+        <div class="services-grid">
+            <!-- Servicio 1: Exportaciones -->
+            <div class="service-card">
+                <div class="service-card-header">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Exportaciones" class="w-full h-full object-cover">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-[#17478f]">Exportaciones</h3>
-                        <p class="service-description text-gray-600 mt-2">
-                            Acompañamos con experiencia, profesionalidad y eficiencia sus operaciones de exportación.                        </p>
+                    <h3 class="service-card-title">Exportaciones</h3>
+                    <p class="service-card-text">
+                        Acompañamos con experiencia, profesionalidad y eficiencia sus operaciones de exportación, ya sea un exportador con experiencia o si está dando sus primeros pasos.
+                    </p>
+                    <div class="service-card-features">
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Gestión integral de documentación</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Asesoramiento en normativas aduaneras</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Optimización de costos logísticos</span>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0">
-                        <a href="exportaciones.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
-                            Más información
+                    <div class="service-card-footer">
+                        <a href="exportaciones.html" class="btn-primary">
+                            <i class="fas fa-arrow-right mr-2"></i> Más información
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="flex items-center p-4">
-                    <div class="flex-shrink-0 mr-4">
-                        <i class="fas fa-file-import text-3xl text-[#17478f]"></i>
+
+            <!-- Servicio 2: Importaciones -->
+            <div class="service-card">
+                <div class="service-card-header">
+                    <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Importaciones" class="w-full h-full object-cover">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <i class="fas fa-file-import"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-[#17478f]">Importaciones</h3>
-                        <p class="service-description text-gray-600 mt-2">
-                            Acompañamos con experiencia, profesionalidad y eficiencia sus operaciones de importación.                        </p>
+                    <h3 class="service-card-title">Importaciones</h3>
+                    <p class="service-card-text">
+                        Acompañamos con experiencia, profesionalidad y eficiencia sus operaciones de importación, ya sea un importador con experiencia o si está dando sus primeros pasos.
+                    </p>
+                    <div class="service-card-features">
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Gestión de licencias y permisos</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Clasificación arancelaria</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Seguimiento de mercadería</span>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0">
-                        <a href="importaciones.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
-                            Más información
+                    <div class="service-card-footer">
+                        <a href="importaciones.html" class="btn-primary">
+                            <i class="fas fa-arrow-right mr-2"></i> Más información
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="flex items-center p-4">
-                    <div class="flex-shrink-0 mr-4">
-                        <i class="fas fa-users text-3xl text-[#17478f]"></i>
+
+            <!-- Servicio 3: Outsourcing -->
+            <div class="service-card">
+                <div class="service-card-header">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Outsourcing" class="w-full h-full object-cover">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-[#17478f]">Outsourcing</h3>
-                        <p class="service-description text-gray-600 mt-2">
-                            Ofrecemos servicios personalizados de comercio exterior adaptados al requerimiento de su empresa.                        </p>
+                    <h3 class="service-card-title">Outsourcing</h3>
+                    <p class="service-card-text">
+                        Ofrecemos servicios personalizados de comercio exterior adaptados al requerimiento de su empresa, en un marco de confidencialidad, experiencia y compromiso.
+                    </p>
+                    <div class="service-card-features">
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Gestión integral de operaciones</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Reducción de costos operativos</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Equipo especializado a su disposición</span>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0">
-                        <a href="outsourcing.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
-                            Más información
+                    <div class="service-card-footer">
+                        <a href="outsourcing.html" class="btn-primary">
+                            <i class="fas fa-arrow-right mr-2"></i> Más información
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="flex items-center p-4">
-                    <div class="flex-shrink-0 mr-4">
-                        <i class="fas fa-question-circle text-3xl text-[#17478f]"></i>
+
+            <!-- Servicio 4: Asesoramiento -->
+            <div class="service-card">
+                <div class="service-card-header">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Asesoramiento" class="w-full h-full object-cover">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <i class="fas fa-question-circle"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-[#17478f]">Asesoramiento</h3>
-                        <p class="service-description text-gray-600 mt-2">
-                            Brindamos consultoría especializada para tus proyectos internacionales.
-                        </p>
+                    <h3 class="service-card-title">Asesoramiento</h3>
+                    <p class="service-card-text">
+                        Lo guiamos en sus primeros pasos, brindándole la información que necesita saber para su operación de comercio internacional.
+                    </p>
+                    <div class="service-card-features">
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Consultoría personalizada</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Análisis de mercados internacionales</span>
+                        </div>
+                        <div class="service-card-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="service-card-feature-text">Estrategias de internacionalización</span>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0">
-                        <a href="asesoramiento.html" class="service-link inline-block bg-[#17478f] text-white px-4 py-2 rounded-md hover:bg-[#0f3166] transition duration-300">
-                            Más información
+                    <div class="service-card-footer">
+                        <a href="asesoramiento.html" class="btn-primary">
+                            <i class="fas fa-arrow-right mr-2"></i> Más información
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    
+    <!-- Sección de Proceso -->
+    <section class="process-section section-container fade-in">
+        <h2 class="section-title">Nuestro Proceso de Trabajo</h2>
+        <div class="process-content">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Consulta Inicial</h3>
+                            <p class="process-step-text">
+                                Realizamos una reunión para entender sus necesidades específicas y objetivos comerciales. Analizamos su situación actual y definimos el alcance del servicio.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Análisis y Planificación</h3>
+                            <p class="process-step-text">
+                                Nuestro equipo de expertos evalúa las opciones disponibles y desarrolla una estrategia personalizada para su operación de comercio exterior.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">3</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Implementación</h3>
+                            <p class="process-step-text">
+                                Ejecutamos la estrategia definida, gestionando todos los aspectos de su operación internacional con eficiencia y profesionalismo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="process-step">
+                        <div class="process-step-number">4</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Seguimiento</h3>
+                            <p class="process-step-text">
+                                Monitoreamos constantemente el progreso de su operación, manteniéndolo informado en cada etapa del proceso y resolviendo cualquier imprevisto.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">5</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Evaluación y Optimización</h3>
+                            <p class="process-step-text">
+                                Analizamos los resultados obtenidos y proponemos mejoras para optimizar sus futuras operaciones de comercio exterior.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">6</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">Acompañamiento Continuo</h3>
+                            <p class="process-step-text">
+                                Mantenemos una relación a largo plazo, brindando asesoramiento continuo y adaptándonos a las nuevas necesidades que surjan en su negocio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de CTA -->
+    <section class="section-container slide-up">
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para impulsar su negocio internacional?</h2>
+                <p class="cta-text">
+                    Contáctenos hoy mismo y descubra cómo nuestro equipo de expertos puede ayudarle a optimizar sus operaciones de comercio exterior.
+                </p>
+                <a href="contacto.html" class="btn-white">
+                    <i class="fas fa-paper-plane mr-2"></i> Solicitar asesoramiento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="https://api.whatsapp.com/send?phone=5491170646726&text=Hola%20estoy%20interesado%20en%20trabajar%20con%20mball!" target="_blank" class="whatsapp-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-[#17478f] text-white text-center py-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col lg:flex-row justify-between items-center m-3">
-                
-                <!-- Enlaces a redes sociales -->
-                <div class="mb-4 lg:mb-0 flex space-x-6">
-                    <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-300">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-6">
-                    </a>
-                    <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-300">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-6">
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-300">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-6">
-                    </a>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Columna 1: Sobre nosotros -->
+                <div>
+                    <h3 class="footer-title">Sobre nosotros</h3>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Estudio Ball es un estudio de comercio exterior con más de 25 años de experiencia, ofreciendo servicios personalizados para empresas de todos los tamaños.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com" target="_blank" class="footer-social-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" class="footer-social-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" class="footer-social-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                        </a>
+                    </div>
                 </div>
-                
-                <!-- Información de contacto -->
-                <div class="text-sm space-y-2 mb-4 lg:mb-0">
-                    <p><a href="mailto:info@estudioball.com" class="hover:underline">E-Mail: info@estudioball.com</a></p>
-                    <p><a href="tel:+1234567890" class="hover:underline">Teléfono: +123 456 7890</a></p>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div>
+                    <h3 class="footer-title">Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html#nosotros"><i class="fas fa-chevron-right mr-2"></i> Nosotros</a></li>
+                        <li class="footer-link"><a href="servicios.html"><i class="fas fa-chevron-right mr-2"></i> Servicios</a></li>
+                        <li class="footer-link"><a href="exportaciones.html"><i class="fas fa-chevron-right mr-2"></i> Exportaciones</a></li>
+                        <li class="footer-link"><a href="importaciones.html"><i class="fas fa-chevron-right mr-2"></i> Importaciones</a></li>
+                        <li class="footer-link"><a href="outsourcing.html"><i class="fas fa-chevron-right mr-2"></i> Outsourcing</a></li>
+                        <li class="footer-link"><a href="asesoramiento.html"><i class="fas fa-chevron-right mr-2"></i> Asesoramiento</a></li>
+                        <li class="footer-link"><a href="contacto.html"><i class="fas fa-chevron-right mr-2"></i> Contacto</a></li>
+                    </ul>
                 </div>
-    
+
+                <!-- Columna 3: Servicios -->
+                <div>
+                    <h3 class="footer-title">Nuestros servicios</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="exportaciones.html"><i class="fas fa-globe-americas mr-2"></i> Exportaciones</a></li>
+                        <li class="footer-link"><a href="importaciones.html"><i class="fas fa-ship mr-2"></i> Importaciones</a></li>
+                        <li class="footer-link"><a href="outsourcing.html"><i class="fas fa-tasks mr-2"></i> Outsourcing</a></li>
+                        <li class="footer-link"><a href="asesoramiento.html"><i class="fas fa-lightbulb mr-2"></i> Asesoramiento</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="footer-contact-text">Moreno 955, C1091AAS CABA, Argentina</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <span class="footer-contact-text">+54 9 11 7064-6726</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="footer-contact-text">info@estudioball.com</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <span class="footer-contact-text">Lun - Vie: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-    
-            <!-- Derechos reservados -->
-            <div class="mt-4">
-                <p>&copy; 2024 Estudio Ball. Todos los derechos reservados.</p>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>© 2024 Estudio Ball. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.service-card, .process-step').forEach(el => {
+                observer.observe(el);
+                el.classList.remove('fade-in');
+            });
+        });
+    </script>
 </body>
 
 </html>
