@@ -1134,7 +1134,7 @@
     <!-- Popup de confirmación -->
     <div id="popup">
         <h2 class="popup-title">Consulta enviada</h2>
-        <p>Gracias por elegirnos, va a recibir una respuesta inmediata a su mail.</p>
+        <p>Gracias por enviarnos su consulta. Por favor, revise su correo electrónico para verificar que sus datos sean correctos. Ahí encontrará adjunta una presentación con información relevante sobre nuestra empresa. En breve nos estaremos contactando con usted.</p>
         <button onclick="closePopup()" class="popup-button">Cerrar</button>
     </div>
 
@@ -1154,7 +1154,7 @@
             e.preventDefault();
             document.getElementById('overlay').style.display = 'block';
             const formData = new FormData(e.target);
-            fetch('https://script.google.com/macros/s/AKfycbxtTWxWpQ7xJTyTyBy9o6Es2KsdZ3q30w3POb-hxAjLY6SdecEIFmBAT_A-wIT0rsw/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxzi9hdJ8GNS7At2wUOkJ2z6ChjphrRwJGUtt3xaxZiXlKM4KSVpJ9tiU88msRgTP3E/exec', {
                 method: 'POST',
                 body: formData
             }).then(response => response.text())
