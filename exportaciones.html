@@ -1116,6 +1116,10 @@
             }).then(response => response.text())
             .then(() => {
                 if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {'send_to': 'AW-18057168372/JjsiCNGP0qQcEPSLqqJD'});
+                }
+                console.log('Google Ads conversion sent');
+                if (typeof gtag === 'function') {
                     gtag('event', 'generate_lead', {
                         send_to: 'AW-18057168372'
                     });
@@ -1126,9 +1130,6 @@
                     submitButton.innerHTML = originalButtonHtml;
                 }
                 document.getElementById('popup').style.display = 'block';
-                if (typeof gtag === 'function') {
-                    gtag('event', 'conversion', {'send_to': 'AW-18057168372/JjsiCNGP0qQcEPSLqqJD'});
-                }
                 form.reset();
             }).catch(error => {
                 console.error('Error:', error);
