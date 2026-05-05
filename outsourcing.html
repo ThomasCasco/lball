@@ -781,7 +781,7 @@
                 </div>
                 <p class="text-gray-700">Elimine gastos fijos relacionados con personal, capacitación y tecnología especializada en comercio exterior.</p>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 bg-[#e6eefb] rounded-full flex items-center justify-center mr-4">
@@ -791,7 +791,7 @@
                 </div>
                 <p class="text-gray-700">Cuente con profesionales especializados que optimizan los procesos y reducen tiempos de gestión.</p>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 bg-[#e6eefb] rounded-full flex items-center justify-center mr-4">
@@ -808,7 +808,7 @@
     <section class="features-section fade-in">
         <div class="section-container">
             <h2 class="section-title">Por qué elegir MB Estudio de Comercio Exterior</h2>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 - Nuestro diferencial -->
                 <div class="feature-card">
@@ -829,7 +829,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <!-- Card 2 - Nuestro enfoque -->
                 <div class="feature-card">
                     <div class="feature-card-header">
@@ -849,7 +849,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <!-- Card 3 - Nuestros valores -->
                 <div class="feature-card">
                     <div class="feature-card-header">
@@ -883,12 +883,12 @@
                     <form id="contactForm" class="contact-form">
                         <input type="hidden" id="origen1" name="origen1" value="Outsourcing">
                         <h3 class="text-2xl font-bold text-[#17478f] mb-6">Datos de contacto</h3>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="razon_social">Razón Social (de corresponder):</label>
                             <input type="text" id="razon_social" name="razon_social" class="form-control">
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="provincia">Provincia:</label>
                             <select id="provincia" name="provincia" class="form-control" required>
@@ -919,42 +919,42 @@
                                 <option value="Tucumán">Tucumán</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="nombre">Nombre:</label>
                             <input type="text" id="nombre" name="nombre" class="form-control" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="email">E-mail:</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="telefono">Teléfono:</label>
                             <input type="tel" id="telefono" name="telefono" class="form-control" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label" for="consulta">Consulta:</label>
                             <textarea id="consulta" name="consulta" rows="5" class="form-control" required></textarea>
                         </div>
-                        
+
                         <button type="submit" class="form-submit">
                             <i class="fas fa-paper-plane mr-2"></i> Enviar consulta
                         </button>
                     </form>
                 </div>
-                
+
                 <!-- Mapa y contacto -->
                 <div class="space-y-8">
-                    
+
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26277.058489721133!2d-58.3849396!3d-34.611932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacaf9d203fb%3A0xd3c4bfa389d98ba7!2sMoreno%20955%2C%20C1091AAS%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1632849294283!5m2!1ses!2sar"
                             width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
-                    
+
                     <div class="contact-info">
                         <div class="contact-info-item">
                             <i class="fas fa-envelope"></i>
@@ -968,7 +968,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="whatsapp-float">
             <a href="https://api.whatsapp.com/send?phone=5491173657809&text=Hola%20estoy%20interesado%20en%20trabajar%20con%20MB!" target="_blank" class="whatsapp-button">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -1018,8 +1018,19 @@
             fetch('https://script.google.com/macros/s/AKfycbxzi9hdJ8GNS7At2wUOkJ2z6ChjphrRwJGUtt3xaxZiXlKM4KSVpJ9tiU88msRgTP3E/exec', {
                 method: 'POST',
                 body: formData
-            }).then(response => response.text())
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                return response.text();
+            })
             .then(() => {
+                document.getElementById('overlay').style.display = 'none';
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonHtml;
+                }
+                document.getElementById('popup').style.display = 'block';
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {'send_to': 'AW-18057168372/JjsiCNGP0qQcEPSLqqJD'});
                 }
@@ -1029,12 +1040,6 @@
                         send_to: 'AW-18057168372'
                     });
                 }
-                document.getElementById('overlay').style.display = 'none';
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonHtml;
-                }
-                document.getElementById('popup').style.display = 'block';
                 form.reset();
             }).catch(error => {
                 console.error('Error:', error);
